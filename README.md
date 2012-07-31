@@ -14,7 +14,7 @@ vnoremap <C-P> :call PhpDocRange()<CR>
 ```
 In my own vim configuration, I'm currently using 
 
-```php
+```vim
 "" PDV - php Documentor
 nnoremap <C-s> :call PhpDocSingle()<CR>
 vnoremap <C-s> :call PhpDocRange()<CR>
