@@ -1,42 +1,23 @@
-This is a mirror of http://www.vim.org/scripts/script.php?script_id=1355
+# PDV (phpDocumentor for Vim)
 
-PDV (phpDocumentor for Vim)
-========================
+This is a fork of a mirror of PDV (http://www.vim.org/scripts/script.php?script_id=1355). PDV works fairly well,
+however I wanted to customize it some to our workflow and standards at iMarc. For example, we don't use packages,
+only write PHP 5 code, etc.
 
-Version: 1.0.0
+## Usage
 
-Copyright 2005 by Tobias Schlitt <toby@php.net>
-Inspired by phpDoc script for Vim by Vidyut Luther (http://www.phpcult.com/).
+The usage is the same. You can install via Vundle (BundleInstall 'khamer/PDV--phpDocumentor-for-Vim') or just by downloading and such. To use, you can `:call` `PhpDocSingle()` or `PhpDocRange()`. The examples from the original documentation are:
+```vim
+inoremap <C-P> <ESC>:call PhpDocSingle()<CR>
+nnoremap <C-P> :call PhpDocSingle()<CR>
+vnoremap <C-P> :call PhpDocRange()<CR>
+```
+In my own vim configuration, I'm currently using 
 
-Provided under the GPL (http://www.gnu.org/copyleft/gpl.html).
+```php
+"" PDV - php Documentor
+nnoremap <C-s> :call PhpDocSingle()<CR>
+vnoremap <C-s> :call PhpDocRange()<CR>
+```
 
-This script provides functions to generate phpDocumentor conform
-documentation blocks for your PHP code. The script currently
-documents:
-
-- Classes
-- Methods/Functions
-- Attributes
-
-All of those supporting all PHP 4 and 5 syntax elements.
-
-Beside that it allows you to define default values for phpDocumentor tags
-like @version (I use $id$ here), @author, @license and so on.
-
-For function/method parameters and attributes, the script tries to guess the
-type as good as possible from PHP5 type hints or default values (array, bool,
-int, string...).
-
-You can use this script by mapping the function PhpDoc() to any
-key combination. Hit this on the line where the element to document
-resides and the doc block will be created directly above that line.
-
-Changelog
-=========
-
-Version 1.0.0
--------------------
-
-* Created the initial version of this script while playing around with VIM
-   scripting the first time and trying to fix Vidyut's solution, which
-   resulted in a complete rewrite.
+Enjoy.
