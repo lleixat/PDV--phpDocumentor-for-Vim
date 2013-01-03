@@ -26,8 +26,8 @@ let g:pdv_cfg_CommentSingle = "//"
 " Default values
 let g:pdv_cfg_Type = "mixed"
 let g:pdv_cfg_Version = "$id$"
-let g:pdv_cfg_Author = "Kevin Hamer [kh] <kevin@imarc.net>"
-let g:pdv_cfg_Copyright = "iMarc LLC 1995-" + strftime("%Y")
+let g:pdv_cfg_Author = "Thomas Lleixa [l3x] <thomas.lleixa@gmail.com>"
+let g:pdv_cfg_Copyright = "tetrapo.de 2012-" + strftime("%Y")
 let g:pdv_cfg_ReturnVal = "void"
 
 " Whether to create @uses tags for implementation of interfaces and inheritance
@@ -61,7 +61,7 @@ let g:pdv_re_param = ' *\([^ &]*\) *&\?\$\([A-Za-z_][A-Za-z0-9_]*\) *=\? *\(.*\)
 let g:pdv_re_attribute = '^\s*\(\(private\|public\|protected\|var\|static\)\+\)\s*\$\([^ ;=]\+\)[ =]*\(.*\);\?$'
 
 " [:spacce:]*(abstract|final|)[:space:]*(class|interface)+[:space:]+\(extends ([:identifier:])\)?[:space:]*\(implements ([:identifier:][, ]*)+\)?
-let g:pdv_re_class = '^\s*\([a-zA-Z]*\)\s*\(interface\|class\)\s*\([^ ]\+\)\s*\(extends\)\?\s*\([a-zA-Z0-9]*\)\?\s*\(implements*\)\? *\([a-zA-Z0-9_ ,]*\)\?.*$'
+let g:pdv_re_class = '^\s*\([a-zA-Z]*\)\s*\(interface\|class\)\s*\([^ ]\+\)\s*\(extends\)\?\s*\([a-zA-Z0-9_]*\)\?\s*\(implements*\)\? *\([a-zA-Z0-9_ ,]*\)\?.*$'
 
 let g:pdv_re_array  = "^array *(.*"
 let g:pdv_re_float  = '^[0-9.]\+'
