@@ -25,7 +25,7 @@ let g:pdv_cfg_CommentSingle = "//"
 
 " Default values
 let g:pdv_cfg_Type = "mixed"
-let g:pdv_cfg_Version = "$id$"
+let g:pdv_cfg_Version = "$Id$"
 let g:pdv_cfg_Author = "Thomas Lleixa [l3x] <thomas.lleixa@gmail.com>"
 let g:pdv_cfg_Copyright = "tetrapo.de 2012-" + strftime("%Y")
 let g:pdv_cfg_ReturnVal = "void"
@@ -318,7 +318,7 @@ func! PhpDocClass()
 	exe l:txtBOL . g:pdv_cfg_Comment1 . " " . l:classname . g:pdv_cfg_EOL
     exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
     if l:extends != "" && l:extends != "implements"
-    	exe l:txtBOL . g:pdv_cfg_Commentn . " @uses " . l:extends . g:pdv_cfg_EOL
+    	exe l:txtBOL . g:pdv_cfg_Commentn . " @extends " . l:extends . g:pdv_cfg_EOL
     endif
 
 	while (l:interfaces != ",") && (l:interfaces != "")
@@ -340,7 +340,7 @@ func! PhpDocClass()
 	exe l:txtBOL . g:pdv_cfg_Commentn . " @copyright " . g:pdv_cfg_Copyright . g:pdv_cfg_EOL
     exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
 	exe l:txtBOL . g:pdv_cfg_Commentn . " @version " . g:pdv_cfg_Version . g:pdv_cfg_EOL
-	exe l:txtBOL . g:pdv_cfg_Commentn . " @changes" . g:pdv_cfg_EOL
+	"exe l:txtBOL . g:pdv_cfg_Commentn . " @changes" . g:pdv_cfg_EOL
 
 	" Close the comment block.
 	exe l:txtBOL . g:pdv_cfg_CommentTail . g:pdv_cfg_EOL
