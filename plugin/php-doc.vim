@@ -27,12 +27,16 @@ let g:pdv_cfg_CommentSingle = "//"
 let g:pdv_cfg_Type = "mixed"
 let g:pdv_cfg_Version = "$Id$"
 let g:pdv_cfg_Author = "Thomas Lleixa [l3x] <thomas.lleixa@gmail.com>"
+let g:pdv_cfg_Author_link = "http://thomaslleixa.fr thomaslleixa.fr"
 let g:pdv_cfg_Copyright = "tetrapo.de 2012-" + strftime("%Y")
-let g:pdv_cfg_ReturnVal = "void"
+let g:pdv_cfg_ReturnVal = "mixed"
+let g:pdv_cfg_Package = "Giift"
 
 " Whether to create @uses tags for implementation of interfaces and inheritance
 let g:pdv_cfg_Uses = 1
 
+let g:pdv_cfg_use_authorlink = 0
+let g:pdv_cfg_use_Package = 1
 " Options
 " :set paste before documenting (1|0)? Recommended.
 let g:pdv_cfg_paste = 1
@@ -305,6 +309,8 @@ func! PhpDocClass()
 	let l:classname = substitute (l:name, g:pdv_re_class, '\3', "g")
 	let l:extends = g:pdv_cfg_Uses == 1 ? substitute (l:name, g:pdv_re_class, '\5', "g") : ""
 	let l:interfaces = g:pdv_cfg_Uses == 1 ? substitute (l:name, g:pdv_re_class, '\7', "g") . "," : ""
+	let l:author_link = g:pdv_cfg_use_authorlink == 1 ? " {@link " . g:pdv_cfg_Author_link . "}" : ""
+	let l:package = g:pdv_cfg_use_Package == 1 ? g:pdv_cfg_Package : ""
 
 	let l:abstract = matchstr(l:modifier, g:pdv_re_abstract)
 	let l:final = matchstr(l:modifier, g:pdv_re_final)
@@ -336,8 +342,12 @@ func! PhpDocClass()
         exe l:txtBOL . g:pdv_cfg_Commentn . " @final" . g:pdv_cfg_EOL
     endif
     exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
-	exe l:txtBOL . g:pdv_cfg_Commentn . " @author " . g:pdv_cfg_Author . g:pdv_cfg_EOL
+	exe l:txtBOL . g:pdv_cfg_Commentn . " @author " . g:pdv_cfg_Author . l:author_link . g:pdv_cfg_EOL
 	exe l:txtBOL . g:pdv_cfg_Commentn . " @copyright " . g:pdv_cfg_Copyright . g:pdv_cfg_EOL
+    if l:package != ""
+        exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
+        exe l:txtBOL . g:pdv_cfg_Commentn . " @package " . l:package . g:pdv_cfg_EOL
+    endif
     exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
 	exe l:txtBOL . g:pdv_cfg_Commentn . " @version " . g:pdv_cfg_Version . g:pdv_cfg_EOL
 	"exe l:txtBOL . g:pdv_cfg_Commentn . " @changes" . g:pdv_cfg_EOL
