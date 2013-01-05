@@ -31,17 +31,17 @@ let g:pdv_cfg_CommentSingle = "//"
 " @commit  $Commit: 929b15d4664da028a358de60c1529877a7653346$
 " @update  $Date: Sat Jan 5 12:05:36 2013 +0100$
 " @changes $Changes: My awesome feature$
-let g:pdv_cfg_Version = "$Id$"
+let g:pdv_cfg_Version  = "$Id$"
 let g:pdv_cfg_Revision = "$Revision$"
-let g:pdv_cfg_Commit  = "$Commit$"
-let g:pdv_cfg_Update  = "$Date$"
-let g:pdv_cfg_Changes = "$Changes$"
+let g:pdv_cfg_Commit   = "$Commit$"
+let g:pdv_cfg_Update   = "$Date$"
+let g:pdv_cfg_Changes  = "$Changes$"
 
 let g:pdv_cfg_Author      = "Thomas Lleixa [l3x] <thomas.lleixa@gmail.com>"
 let g:pdv_cfg_Author_link = "http://thomaslleixa.fr thomaslleixa.fr"
 let g:pdv_cfg_Copyright   = "tetrapo.de 2012-" + strftime("%Y")
 let g:pdv_cfg_ReturnVal   = "mixed"
-let g:pdv_cfg_Package     = "Giift"
+let g:pdv_cfg_Package     = "App"
 let g:pdv_cfg_Type        = "mixed"
 
 " Whether to create @uses tags for implementation of interfaces and inheritance
@@ -53,7 +53,7 @@ let g:pdv_cfg_use_Package    = 1
 let g:pdv_cfg_use_Changes    = 0
 let g:pdv_cfg_use_Commit     = 0
 let g:pdv_cfg_use_Update     = 1
-let g:pdv_cfg_use_Version    = 0
+let g:pdv_cfg_use_Version    = 1
 let g:pdv_cfg_use_Revision   = 0
 
 " Options
