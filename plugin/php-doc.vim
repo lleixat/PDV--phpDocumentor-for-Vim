@@ -48,10 +48,11 @@ let g:pdv_cfg_Uses = 1
 
 " Use it or not (1|0)?
 let g:pdv_cfg_use_authorlink = 0
-let g:pdv_cfg_use_Package    = 1
-let g:pdv_cfg_use_Commit     = 1
-let g:pdv_cfg_use_Date       = 1
-let g:pdv_cfg_use_Version    = 1
+let g:pdv_cfg_use_Package = 1
+let g:pdv_cfg_use_Changes = 1
+let g:pdv_cfg_use_Commit = 1
+let g:pdv_cfg_use_Update = 1
+let g:pdv_cfg_use_Version = 1
 
 " Options
 " :set paste before documenting (1|0)? Recommended.
@@ -329,12 +330,12 @@ func! PhpDocClass()
     
     let l:package = g:pdv_cfg_use_Package == 1 ? g:pdv_cfg_Package : ""
     let l:commit  = g:pdv_cfg_use_Commit == 1 ? g:pdv_cfg_Commit : ""
-    let l:date    = g:pdv_cfg_use_Date == 1 ? g:pdv_cfg_Date : ""
+    let l:update  = g:pdv_cfg_use_Update == 1 ? g:pdv_cfg_Update : ""
     let l:version = g:pdv_cfg_use_Version == 1 ? g:pdv_cfg_Version : ""
     let l:changes = g:pdv_cfg_use_Changes == 1 ? g:pdv_cfg_Changes : ""
 
     let l:abstract = matchstr(l:modifier, g:pdv_re_abstract)
-    let l:final    = matchstr(l:modifier, g:pdv_re_final)
+    let l:final = matchstr(l:modifier, g:pdv_re_final)
 
     exe "norm! " . commentline . "G$"
 
@@ -357,13 +358,13 @@ func! PhpDocClass()
     endwhile
 
     if l:abstract != ""
-        exe l:txtBOL . g:pdv_cfg_Commentn . " @abstract" . g:pdv_cfg_EOL
+        exe l:txtBOL . g:pdv_cfg_Commentn . " @abstract " . g:pdv_cfg_EOL
     endif
     if l:final != ""
-        exe l:txtBOL . g:pdv_cfg_Commentn . " @final" . g:pdv_cfg_EOL
+        exe l:txtBOL . g:pdv_cfg_Commentn . " @final " . g:pdv_cfg_EOL
     endif
     exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
-    exe l:txtBOL . g:pdv_cfg_Commentn . " @author " . g:pdv_cfg_Author . l:author_link . g:pdv_cfg_EOL
+    exe l:txtBOL . g:pdv_cfg_Commentn . " @author    " . g:pdv_cfg_Author . l:author_link . g:pdv_cfg_EOL
     exe l:txtBOL . g:pdv_cfg_Commentn . " @copyright " . g:pdv_cfg_Copyright . g:pdv_cfg_EOL
     if l:package != ""
         exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
@@ -374,15 +375,12 @@ func! PhpDocClass()
         exe l:txtBOL . g:pdv_cfg_Commentn . " @version " . l:version . g:pdv_cfg_EOL
     endif
     if l:commit != ""
-        exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
-        exe l:txtBOL . g:pdv_cfg_Commentn . " @commit " . l:commit . g:pdv_cfg_EOL
+        exe l:txtBOL . g:pdv_cfg_Commentn . " @commit  " . l:commit . g:pdv_cfg_EOL
     endif
-    if l:date != ""
-        exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
-        exe l:txtBOL . g:pdv_cfg_Commentn . " @update " . l:date . g:pdv_cfg_EOL
+    if l:update != ""
+        exe l:txtBOL . g:pdv_cfg_Commentn . " @update  " . l:update . g:pdv_cfg_EOL
     endif
     if l:changes != ""
-        exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
         exe l:txtBOL . g:pdv_cfg_Commentn . " @changes " . l:changes . g:pdv_cfg_EOL
     endif
 
