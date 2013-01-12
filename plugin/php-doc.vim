@@ -379,24 +379,24 @@ func! PhpDocClass()
     exe l:txtBOL . g:pdv_cfg_Commentn . " @copyright " . g:pdv_cfg_Copyright . g:pdv_cfg_EOL
     if l:package != ""
         exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
-        exe l:txtBOL . g:pdv_cfg_Commentn . " @package " . l:package . g:pdv_cfg_EOL
+        exe l:txtBOL . g:pdv_cfg_Commentn . " @package   " . l:package . g:pdv_cfg_EOL
     endif
     if l:version != ""
         exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
-        exe l:txtBOL . g:pdv_cfg_Commentn . " @version " . l:version . g:pdv_cfg_EOL
+        exe l:txtBOL . g:pdv_cfg_Commentn . " @version   " . l:version . g:pdv_cfg_EOL
     endif
     if l:revision != ""
         exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
-        exe l:txtBOL . g:pdv_cfg_Commentn . " @rev     " . l:version . g:pdv_cfg_EOL
+        exe l:txtBOL . g:pdv_cfg_Commentn . " @rev       " . l:version . g:pdv_cfg_EOL
     endif
     if l:commit != ""
-        exe l:txtBOL . g:pdv_cfg_Commentn . " @commit  " . l:commit . g:pdv_cfg_EOL
+        exe l:txtBOL . g:pdv_cfg_Commentn . " @commit    " . l:commit . g:pdv_cfg_EOL
     endif
     if l:update != ""
-        exe l:txtBOL . g:pdv_cfg_Commentn . " @update  " . l:update . g:pdv_cfg_EOL
+        exe l:txtBOL . g:pdv_cfg_Commentn . " @update    " . l:update . g:pdv_cfg_EOL
     endif
     if l:changes != ""
-        exe l:txtBOL . g:pdv_cfg_Commentn . " @changes " . l:changes . g:pdv_cfg_EOL
+        exe l:txtBOL . g:pdv_cfg_Commentn . " @changes   " . l:changes . g:pdv_cfg_EOL
     endif
 
     " Close the comment block.
