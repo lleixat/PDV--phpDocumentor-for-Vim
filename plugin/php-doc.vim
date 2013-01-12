@@ -40,6 +40,7 @@ let g:pdv_cfg_Changes  = "$Changes$"
 let g:pdv_cfg_Author      = "Thomas Lleixa [l3x] <thomas.lleixa@gmail.com>"
 let g:pdv_cfg_Author_link = "http://thomaslleixa.fr thomaslleixa.fr"
 let g:pdv_cfg_Copyright   = "tetrapo.de 2012-" + strftime("%Y")
+let g:pdv_cfg_ProjectName = "com2code"
 let g:pdv_cfg_ReturnVal   = "mixed"
 let g:pdv_cfg_Package     = "App"
 let g:pdv_cfg_Type        = "mixed"
@@ -48,13 +49,14 @@ let g:pdv_cfg_Type        = "mixed"
 let g:pdv_cfg_Uses = 1
 
 " Use it or not (1|0)?
-let g:pdv_cfg_use_authorlink = 0
-let g:pdv_cfg_use_Package    = 1
-let g:pdv_cfg_use_Changes    = 0
-let g:pdv_cfg_use_Commit     = 0
-let g:pdv_cfg_use_Update     = 1
-let g:pdv_cfg_use_Version    = 1
-let g:pdv_cfg_use_Revision   = 0
+let g:pdv_cfg_use_authorlink  = 0
+let g:pdv_cfg_use_Package     = 1
+let g:pdv_cfg_use_Changes     = 0
+let g:pdv_cfg_use_Commit      = 0
+let g:pdv_cfg_use_Update      = 1
+let g:pdv_cfg_use_Version     = 1
+let g:pdv_cfg_use_ProjectName = 1
+let g:pdv_cfg_use_Revision    = 0
 
 " Options
 " :set paste before documenting (1|0)? Recommended.
@@ -330,12 +332,13 @@ func! PhpDocClass()
     let l:interfaces  = g:pdv_cfg_Uses == 1 ? substitute (l:name, g:pdv_re_class, '\7', "g") . "," : ""
     let l:author_link = g:pdv_cfg_use_authorlink == 1 ? " {@link " . g:pdv_cfg_Author_link . "}" : ""
     
-    let l:package = g:pdv_cfg_use_Package == 1 ? g:pdv_cfg_Package : ""
-    let l:commit  = g:pdv_cfg_use_Commit == 1 ? g:pdv_cfg_Commit : ""
-    let l:update  = g:pdv_cfg_use_Update == 1 ? g:pdv_cfg_Update : ""
-    let l:version = g:pdv_cfg_use_Version == 1 ? g:pdv_cfg_Version : ""
-    let l:revision = g:pdv_cfg_use_Revision == 1 ? g:pdv_cfg_ReturnVal : ""
-    let l:changes = g:pdv_cfg_use_Changes == 1 ? g:pdv_cfg_Changes : ""
+    let l:package  = g:pdv_cfg_use_Package     == 1 ? g:pdv_cfg_Package     : ""
+    let l:commit   = g:pdv_cfg_use_Commit      == 1 ? g:pdv_cfg_Commit      : ""
+    let l:update   = g:pdv_cfg_use_Update      == 1 ? g:pdv_cfg_Update      : ""
+    let l:version  = g:pdv_cfg_use_Version     == 1 ? g:pdv_cfg_Version     : ""
+    let l:revision = g:pdv_cfg_use_Revision    == 1 ? g:pdv_cfg_ReturnVal   : ""
+    let l:changes  = g:pdv_cfg_use_Changes     == 1 ? g:pdv_cfg_Changes     : ""
+    let l:project  = g:pdv_cfg_use_ProjectName == 1 ? g:pdv_cfg_ProjectName : ""
 
     let l:abstract = matchstr(l:modifier, g:pdv_re_abstract)
     let l:final = matchstr(l:modifier, g:pdv_re_final)
@@ -367,7 +370,12 @@ func! PhpDocClass()
         exe l:txtBOL . g:pdv_cfg_Commentn . " @final " . g:pdv_cfg_EOL
     endif
     exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
-    exe l:txtBOL . g:pdv_cfg_Commentn . " @author    " . g:pdv_cfg_Author . l:author_link . g:pdv_cfg_EOL
+    if l:project != ""
+        let l:author = substitute(g:pdv_cfg_Author, '@', '+'.l:project.'@', '')
+    else
+        let l:author = g:pdv_cfg_Author
+    endif
+    exe l:txtBOL . g:pdv_cfg_Commentn . " @author    " . l:author . l:author_link . g:pdv_cfg_EOL
     exe l:txtBOL . g:pdv_cfg_Commentn . " @copyright " . g:pdv_cfg_Copyright . g:pdv_cfg_EOL
     if l:package != ""
         exe l:txtBOL . g:pdv_cfg_Commentn . g:pdv_cfg_EOL
