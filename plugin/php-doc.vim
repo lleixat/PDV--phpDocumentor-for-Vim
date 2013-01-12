@@ -38,7 +38,7 @@ let g:pdv_cfg_Update   = "$Date$"
 let g:pdv_cfg_Changes  = "$Changes$"
 
 let g:pdv_cfg_Author      = "Thomas Lleixa [l3x] <thomas.lleixa@gmail.com>"
-let g:pdv_cfg_Author_link = "http://thomaslleixa.fr thomaslleixa.fr"
+let g:pdv_cfg_AuthorLink = "http://thomaslleixa.fr thomaslleixa.fr"
 let g:pdv_cfg_Copyright   = "tetrapo.de 2012-" + strftime("%Y")
 let g:pdv_cfg_ProjectName = "com2code"
 let g:pdv_cfg_ReturnVal   = "mixed"
@@ -49,7 +49,7 @@ let g:pdv_cfg_Type        = "mixed"
 let g:pdv_cfg_Uses = 1
 
 " Use it or not (1|0)?
-let g:pdv_cfg_use_authorlink  = 0
+let g:pdv_cfg_use_AuthorLink  = 0
 let g:pdv_cfg_use_Package     = 1
 let g:pdv_cfg_use_Changes     = 0
 let g:pdv_cfg_use_Commit      = 0
@@ -330,7 +330,7 @@ func! PhpDocClass()
     let l:classname   = substitute (l:name, g:pdv_re_class, '\3', "g")
     let l:extends     = g:pdv_cfg_Uses == 1 ? substitute (l:name, g:pdv_re_class, '\5', "g") : ""
     let l:interfaces  = g:pdv_cfg_Uses == 1 ? substitute (l:name, g:pdv_re_class, '\7', "g") . "," : ""
-    let l:author_link = g:pdv_cfg_use_authorlink == 1 ? " {@link " . g:pdv_cfg_Author_link . "}" : ""
+    let l:author_link = g:pdv_cfg_use_AuthorLink == 1 ? " {@link " . g:pdv_cfg_AuthorLink . "}" : ""
     
     let l:package  = g:pdv_cfg_use_Package     == 1 ? g:pdv_cfg_Package     : ""
     let l:commit   = g:pdv_cfg_use_Commit      == 1 ? g:pdv_cfg_Commit      : ""
