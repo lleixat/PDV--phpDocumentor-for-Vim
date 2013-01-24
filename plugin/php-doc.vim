@@ -37,9 +37,9 @@ let g:pdv_cfg_Commit   = "$Commit$"
 let g:pdv_cfg_Update   = "$Date$"
 let g:pdv_cfg_Changes  = "$Changes$"
 
-let g:pdv_cfg_Author      = "Thomas Lleixa [l3x] <thomas.lleixa@gmail.com>"
-let g:pdv_cfg_AuthorLink = "http://thomaslleixa.fr thomaslleixa.fr"
-let g:pdv_cfg_Copyright   = "tetrapo.de 2012-" + strftime("%Y")
+let g:pdv_cfg_Author      = "My name here"
+let g:pdv_cfg_AuthorLink  = "http://mywebsite.tld mywebsite.tld"
+let g:pdv_cfg_Copyright   = "Copyleft: Me 2012-" + strftime("%Y")
 let g:pdv_cfg_ProjectName = "com2code"
 let g:pdv_cfg_ReturnVal   = "mixed"
 let g:pdv_cfg_Package     = "App"
@@ -92,7 +92,7 @@ let g:pdv_re_array  = "^array *(.*"
 let g:pdv_re_float  = '^[0-9.]\+'
 let g:pdv_re_int    = '^[0-9]\+$'
 let g:pdv_re_string = "['\"].*"
-let g:pdv_re_bool = "\(true\|false\)"
+let g:pdv_re_bool   = "\(true\|false\)"
 
 let g:pdv_re_indent = '^\s*'
 
@@ -113,7 +113,7 @@ endfunc
 
 " }}}
  " {{{ PhpDocRange()
- " Documents a whole range of code lines ( does not add defualt doc block to
+ " Documents a whole range of code lines ( does not add default doc block to
  " unknown types of lines ). Skips elements where a docblock is already
  " present.
 func! PhpDocRange() range
@@ -137,37 +137,6 @@ func! PhpDocRange() range
 endfunc
 
  " }}}
-" {{{ PhpDocFold()
-
-" func! PhpDocFold(name)
-" 	let l:startline = line(".")
-" 	let l:currentLine = l:startLine
-" 	let l:commentHead = escape(g:pdv_cfg_CommentHead, "*.");
-"     let l:txtBOL = g:pdv_cfg_BOL . matchstr(l:name, '^\s*')
-" 	" Search above for comment start
-" 	while (l:currentLine > 1)
-" 		if (matchstr(l:commentHead, getline(l:currentLine)))
-" 			break;
-" 		endif
-" 		let l:currentLine = l:currentLine + 1
-" 	endwhile
-" 	" Goto 1 line above and open a newline
-"     exe "norm! " . (l:currentLine - 1) . "Go\<ESC>"
-" 	" Write the fold comment
-"     exe l:txtBOL . g:pdv_cfg_CommentSingle . " {"."{{ " . a:name . g:pdv_cfg_EOL
-" 	" Add another newline below that
-" 	exe "norm! o\<ESC>"
-" 	" Search for our comment line
-" 	let l:currentLine = line(".")
-" 	while (l:currentLine <= line("$"))
-" 		" HERE!!!!
-" 	endwhile
-"
-"
-" endfunc
-
-
-" }}}
 
 " {{{ PhpDoc()
 
